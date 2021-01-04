@@ -1,0 +1,92 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Machine" Height="600" Width="500">
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Background="AliceBlue" Grid.Row="0" Grid.ColumnSpan="5">
+            <TextBlock Style="{StaticResource Name}"> Vending Machine</TextBlock>
+        </StackPanel>
+
+        <ListView Style="{StaticResource Shop}" ItemsSource="{Binding itemViews}" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="4">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Button DataContext="{Binding}" Style="{StaticResource ButtonPurchase}" DockPanel.Dock="Left" Click="Buy">
+                            Purchase
+                        </Button>
+                        <StackPanel DockPanel.Dock="Right">
+                            <TextBlock Style="{StaticResource ProductLabel}" Text="{Binding info.Name}"/>
+                            <TextBlock Style="{StaticResource ProductLabel}" Text="{Binding info.Price, StringFormat=€{0: 0.0}}" />
+                            <TextBlock Foreground="Red" Text="Empty" Visibility="{Binding OutOfItem}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Style="{StaticResource MoneyBut}" Grid.Row="5" Grid.Column="1" Click="Insert50">
+            0.50e
+        </Button>
+        <Button Style="{StaticResource MoneyBut}" Grid.Row="5" Grid.Column="2" Click="Insert100">
+            1e
+        </Button>
+        <Button Style="{StaticResource MoneyBut}" Grid.Row="5" Click="Inser20">
+            0.20e
+        </Button>
+
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="3">
+            <TextBlock Style="{StaticResource ProductLabel}" Text="{Binding payment.Inserted, StringFormat=Inserted €{0:0.00}}"/>
+            <TextBlock Style="{StaticResource ProductLabel}" Text="{Binding payment.Change, StringFormat= Change €{0:0.00}}" />
+        </StackPanel>
+
+        <DockPanel Margin="5" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Background="AntiqueWhite">
+            <TextBlock DockPanel.Dock="Top" FontSize="20" Style="{StaticResource ProductLabel}" HorizontalAlignment="Center">
+                Amount:
+            </TextBlock>
+            <StackPanel DockPanel.Dock="Bottom">
+                <TextBlock Style="{StaticResource ProductLabel}" FontFamily="16" Margin="5" Text="{Binding itemViews[0].StorageDisplay}"/>
+                <TextBlock Style="{StaticResource ProductLabel}" FontFamily="16" Margin="5" Text="{Binding itemViews[1].StorageDisplay}" />
+                <TextBlock Style="{StaticResource ProductLabel}" FontFamily="16" Margin="5" Text="{Binding itemViews[2].StorageDisplay}"/>
+                <TextBlock Style="{StaticResource ProductLabel}" FontFamily="16" Margin="5" Text="{Binding itemViews[3].StorageDisplay}"/>
+                <TextBlock Style="{StaticResource ProductLabel}" FontFamily="16" Margin="5" Text="{Binding itemViews[4].StorageDisplay}"/>
+                <TextBlock Style="{StaticResource ProductLabel}" FontFamily="16" Margin="5" Text="{Binding itemViews[5].StorageDisplay}"/>
+            </StackPanel>
+        </DockPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Background="AliceBlue">
+            <TextBlock DockPanel.Dock="Top" FontSize="20" Style="{StaticResource ProductLabel}" HorizontalAlignment="Center">
+                Buttons
+            </TextBlock>
+            <Button Style="{StaticResource ButtonManager}" Click="Take_Change">
+                Take change
+            </Button>
+            <Button Style="{StaticResource ButtonManager}" Click="Refill_items">
+                Refill 
+            </Button>
+            <Button Style="{StaticResource ButtonManager}" Click="Delete_items">
+                Delete items
+            </Button>
+
+        </StackPanel>
+        
+    </Grid>
+</Window>
