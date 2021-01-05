@@ -16,3 +16,7 @@ C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\WpfApp.exe
 C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\WpfApp.pdb
 C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\LogSystem.g.cs
 C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\LogSystem.baml
+C:\Study\WPFApp\WpfApp\WpfApp\bin\Debug\nunit.framework.dll
+C:\Study\WPFApp\WpfApp\WpfApp\bin\Debug\nunit.framework.pdb
+C:\Study\WPFApp\WpfApp\WpfApp\bin\Debug\nunit.framework.xml
+C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.CopyComplete

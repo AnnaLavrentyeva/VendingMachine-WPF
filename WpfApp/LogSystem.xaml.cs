@@ -16,9 +16,7 @@ using WpfApp.src;
 
 namespace WpfApp
 {
-    /// <summary>
-    /// Логика взаимодействия для LogSystem.xaml
-    /// </summary>
+
     public partial class LogSystem : Window
     {
         public String cash;
