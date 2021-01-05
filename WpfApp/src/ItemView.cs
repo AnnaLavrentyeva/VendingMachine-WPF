@@ -68,7 +68,7 @@ namespace WpfApp.src
         public ItemView(int id, string name, double price)
         {
             _items = new Items(id, name, price);
-            Number = 0;
+            Number = 2;
         }
 
         public int ReFill()

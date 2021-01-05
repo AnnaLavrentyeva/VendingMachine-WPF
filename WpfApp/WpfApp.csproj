@@ -55,11 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LogSystem.xaml.cs">
+      <DependentUpon>LogSystem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Objects.cs" />
     <Compile Include="src\ItemView.cs" />
     <Compile Include="src\MachineView.cs" />
     <Compile Include="src\Payment.cs" />
     <Compile Include="src\Storage.cs" />
+    <Page Include="LogSystem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

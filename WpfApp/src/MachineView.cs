@@ -35,7 +35,6 @@ namespace WpfApp.src
                 if (requestedItem.Reduce())
                 {
                     payment.Pay();
-                    Console.WriteLine("Payment");
                 }
             }
         }
@@ -56,7 +55,6 @@ namespace WpfApp.src
             {
                 i.ReFill();
             }
-            Console.WriteLine("Machine refilled.");
         }
 
         public void Empty()
@@ -65,7 +63,7 @@ namespace WpfApp.src
             {
                 i.Empty();
             }
-            Console.WriteLine("Machine emptied.");
         }
+
     }
 }

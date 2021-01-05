@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfApp.src
 {
@@ -11,8 +13,10 @@ namespace WpfApp.src
         private double _total;
         public double _inserted;
         public double _change;
+        public double _store;
+        public double a;
 
-        private double _bank;
+        public String cash;
 
         public double Total
         {
@@ -56,16 +60,16 @@ namespace WpfApp.src
             }
         }
 
-        public double BankTotal
+        public double Store
         {
             get
             {
-                return _bank;
+                return _store;
             }
             set
             {
-                _bank = value;
-                OnPropertyChanged("BankTotal");
+                _store = value;
+                OnPropertyChanged("Store");
             }
         }
 
@@ -74,12 +78,14 @@ namespace WpfApp.src
             Total = 0;
             Inserted = 0;
             Change = 0;
-            BankTotal = 0;
+            Store = _store;
         }
 
         public void Insert(double money)
         {
             Inserted += money;
+            Console.WriteLine(Store);
+            Console.WriteLine(_store);
         }
 
         public void SelectedPrice(double price)
@@ -99,15 +105,34 @@ namespace WpfApp.src
         public void Pay()
         {
             Change = Inserted - Total;
-            BankTotal += Total;
             Inserted = 0;
             Total = 0;
         }
 
         public void Collect()
         {
-            Console.WriteLine("Payments: " + BankTotal);
+            MainWindow dashboard = new MainWindow();
+
+            SqlConnection sqlConnection = new SqlConnection(@"Data Source=KARHU\SQLEXPRESS; Initial Catalog = LoginDB; Integrated Security=True;");
+            sqlConnection.Open();
+            String queryCash = "SELECT UserCash FROM TableUser";
+            SqlCommand sqlCommandCash = new SqlCommand(queryCash, sqlConnection);
+            using (SqlDataReader reader = sqlCommandCash.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    cash = (reader["UserCash"].ToString());
+                }
+            }
+            double a = Convert.ToDouble(cash);
+            Store = a + Change;
+                
             Change = 0;
+
+            String queryCash2 = "UPDATE TableUser SET UserCash=@CashVal WHERE UserID=1;";
+            SqlCommand sqlCommandCashBack = new SqlCommand(queryCash2, sqlConnection);
+            sqlCommandCashBack.Parameters.AddWithValue("CashVal", Store);
+            sqlCommandCashBack.ExecuteNonQuery();
         }
     }
 }

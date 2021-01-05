@@ -14,3 +14,5 @@ C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.GenerateResource.cache
 C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.CoreCompileInputs.cache
 C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\WpfApp.exe
 C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\WpfApp.pdb
+C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\LogSystem.g.cs
+C:\Study\WPFApp\WpfApp\WpfApp\obj\Debug\LogSystem.baml

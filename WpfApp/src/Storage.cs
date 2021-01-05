@@ -10,5 +10,6 @@ namespace WpfApp.src
     {
         public double Payments { get; set; }
         public double Change { get; set; }
+        public double Store { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfApp.LogSystem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="LogSystem" Height="300" Width="300" FontSize="14" Background="Black">
+    <Border Background="DimGray" CornerRadius="2" Margin="20">
+        <StackPanel>
+        <Label Content="Welcome!" Foreground="Black" FontSize="25" HorizontalAlignment="Center"/>
+            <Label Content="Username" Foreground="White" />
+            <TextBox Name="txtUsername" Background="Gray" Foreground="White"/>
+            <Label Content="Password" Foreground="White" />
+            <PasswordBox Name="txtPassword" Background="Gray" Foreground="White"/>
+            <Button x:Name="Submit" Background="Gray" Margin="50" Content="Login" Foreground="Black" Click="Login_Click"/>
+        </StackPanel>
+    </Border>
+</Window>
