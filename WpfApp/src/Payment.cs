@@ -84,8 +84,7 @@ namespace WpfApp.src
         public void Insert(double money)
         {
             Inserted += money;
-            Console.WriteLine(Store);
-            Console.WriteLine(_store);
+
         }
 
         public void SelectedPrice(double price)
@@ -111,8 +110,6 @@ namespace WpfApp.src
 
         public void Collect()
         {
-            MainWindow dashboard = new MainWindow();
-
             SqlConnection sqlConnection = new SqlConnection(@"Data Source=KARHU\SQLEXPRESS; Initial Catalog = LoginDB; Integrated Security=True;");
             sqlConnection.Open();
             String queryCash = "SELECT UserCash FROM TableUser";
@@ -129,10 +126,22 @@ namespace WpfApp.src
                 
             Change = 0;
 
+            UpdateCashValue(Store);
+        }
+
+        public void UpdateCashValue(double store)
+        {
+
+            SqlConnection sqlConnection = new SqlConnection(@"Data Source=KARHU\SQLEXPRESS; Initial Catalog = LoginDB; Integrated Security=True;");
+            sqlConnection.Open();
+            
             String queryCash2 = "UPDATE TableUser SET UserCash=@CashVal WHERE UserID=1;";
             SqlCommand sqlCommandCashBack = new SqlCommand(queryCash2, sqlConnection);
-            sqlCommandCashBack.Parameters.AddWithValue("CashVal", Store);
+            sqlCommandCashBack.Parameters.AddWithValue("CashVal", store);
             sqlCommandCashBack.ExecuteNonQuery();
+            sqlConnection.Close();
+
         }
+
     }
 }
